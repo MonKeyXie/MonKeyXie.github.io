@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>有趣的鼠标悬浮模糊效果</title>
+</head>
+<style>
+	h1{margin:0;}
+	.wrap{
+	  //padding:0px;
+	  width:400px;
+	  height:300px;
+	  position:relative;
+	}
+	.border{
+		//margin-top:100px;
+		//text-align:center;
+		width:400px;			/*这里的宽高关系到后面伪元素设置宽高百分比*/
+		height:300px;
+	    position:relative;
+	}
+	/****图片模糊****/
+	.blur{
+		//margin-top:-70px;
+		position:absolute;
+		transition:all .5s ease;
+	}
+	.wrap:hover .blur{
+		transition:all .5s ease;
+		
+		-webkit-filter:blur(3.5px);
+		filter:blur(3.5px);
+	}
+	
+	/****形扩展状****/
+	.border::before,.border::after{
+		content:"";
+		display:block;
+		position:absolute;	/*border is relative,but “::before” is absolute?*/
+		width:0; 	/*宽高指这个box(正方形)的宽高，都设为0那么这个box*/
+		height:0;
+		opacity:.5;
+		box-sizing:border-box;
+		transition-property:height,width,left,top;
+		transition-delay:0.2s;
+		transition-duration:0.8s;
+		transition-timing-function:ease-out;
+	}
+	/*::before作为上下两条边*/
+	.border::before{		
+		height:100%;			/*设置box的高度(::berfore将用作box的长,即上下两条边)*/
+		left:50%;			/*这里设置::before在页面中的位置,既上下的中间的两个点*/
+	}
+	.wrap:hover > .border::before{
+		left:0;
+		width:100%;
+		border:6px solid #FFF;			/*设置box样式*/
+		border-left-color:transparent;	/*这里把::before这个box的宽去掉了，只剩下长*/
+		border-right-color:transparent;
+	}
+	/*::after作为左右两条边*/
+	.border::after{
+		width:100%;
+		top:50%;
+	}
+	.wrap:hover > .border::after{
+		top:0;
+		height:100%;
+		border:5.5px solid #FFF;			
+		border-top-color:transparent;	
+		border-bottom-color:transparent;
+	}
+	
+	/****文字流光****/
+	.border h1, .border a{
+		z-index:10;
+		transition:all .8s ease-out;
+	}
+	.border h1{
+		padding-top:100px;
+		font-size:28px;
+		position:absolute;
+		width:100%;
+		text-align:center;
+		z-index:-1;
+	}
+	.border a{
+		text-decoration:none; 		/*消除<a>自带的下划线*/
+		padding-top:60px;
+		color:black;
+		font-size:25px;
+		display:block;				/*??*/
+		position:absolute;			/*其父级<h1>设置了absolute,<a>也如此设置来脱离父级*/
+		/*宽度100%加上水平居中，让<a>里面的下一级，既是里面的文字居中*/
+		width:100%;
+		text-align:center;
+		left:0;         /*meiyong ?*/
+		//z-index:-1;   /*继承了<h1>,可省略*/
+	}
+	.wrap:hover > .border h1, .wrap:hover > .border a{
+		z-index:3;
+		transition:all .8s ease-out;
+	}
+	.text-gradient{
+		display:inline-block;
+		color:black;
+		font-size:10em;
+		background-image: -webkit-linear-gradient(left, #F6F, #6FF 25%, #FC0 50%, #6FF 75%, #F6F);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-background-size: 200% 100%;
+        -webkit-animation: masked-animation 4s infinite linear;
+	}
+	@-webkit-keyframes masked-animation {
+    0%  { background-position: 0 0;}
+    100% { background-position: -100% 0;}
+}
+</style>
+
+<body>
+	<div class="wrap">
+    	<img class="blur" src="zhinaijiang.gif"/>
+        <div class="border">
+        	<h1 class="text-gradient">我去前面探探路<h1>
+            <a class="text-gradient" href="http://www.baidu.com">welcome~!</a>
+        </div>
+    </div>
+</body>
+</html>
