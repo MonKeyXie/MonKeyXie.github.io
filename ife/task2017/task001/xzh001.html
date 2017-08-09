@@ -5,25 +5,29 @@
 <title>有趣的鼠标悬浮模糊效果</title>
 </head>
 <style>
+	body{background: #030303}
 	h1{margin:0;}
 	.wrap{
 	  //padding:0px;
 	  width:400px;
 	  height:300px;
-	  position:relative;
+	  position:absolute;	/*让wrap居中*/
+	  top:50%;
+	  left:50%;
+	  margin:-150px 0 0 -200px;
 	}
 	.border{
 		//margin-top:100px;
 		//text-align:center;
-		width:400px;			/*这里的宽高关系到后面伪元素设置宽高百分比*/
-		height:300px;
-	    position:relative;
+		width:400px;			/*这里的宽高关系到后面伪元素设置宽高百分比(border的伪元素跟随border的宽高)*/
+		height:300px;		/*发现不写.border样式也行，只是没高度。宽度已经继承了.warp*/
+	    //position:relative;
 	}
 	/****图片模糊****/
 	.blur{
 		//margin-top:-70px;
-		position:absolute;
-		transition:all .5s ease;
+		position:absolute;			/*复习：父元素相对，子元素绝对脱离标准文档流，不会把其他块级元素顶开*/
+		transition:all .5s ease;    
 	}
 	.wrap:hover .blur{
 		transition:all .5s ease;		/*用来描述元素之间的过渡，语法：transition：property name | duration | timing function | delay */
@@ -37,25 +41,28 @@
 		content:"";
 		display:block;
 		position:absolute;	/*border is relative,set “::before” absolute能让伪元素相对他的父元素border来进行变换*/
-		width:0; 			/*宽高指这个box(正方形)的宽高，都设为0那么这个box*/
-		height:0;
-		opacity:.5;
+		width:0; 			/*宽高指这个box(正方形)的宽高，都设为0那么这个box就是从0开始变换*/  /*width为0是给:before用的,高度已经设为父元素100%(300px)，负责向左右两边展开*/
+		height:0;			/*同上，height=0是给:after用的，负责向上下展开*/
+		opacity:.5;			/*不透明度*/
 		box-sizing:border-box;							/*用来改变盒模型对元素宽高的计算方式*/
 		transition-property:height,width,left,top;		/*transition-property指定应用过渡属性的名称*/
 		transition-delay:0.2s;							/*transition-delay属性规定了在过渡效果开始作用之前需要等待的时间。*/
 		transition-duration:0.8s;						/*transition-duration属性以秒或毫秒为单位指定过渡动画所需的时间。默认值为 0s ，表示不出现过渡动画。*/
 		transition-timing-function:ease-out;			/*transition-timing-function来指定过渡的方式（渐快/慢等），还有cubic-bezier贝塞尔曲线能让元素的移动轨迹有多重变化（MDN上有很详细的介绍）*/
+
 	}
 	/*::before作为上下两条边*/
 	.border::before{		
 		height:100%;			/*设置box的高度(::berfore将用作box的长,即上下两条边)*/
-		left:50%;				/*这里设置::before在页面中的位置,既上下的中间的两个点,从离父元素左边多远开始扩展*/
-	}
+		left:50%;				/*这里
+		设置::before在页面中的位置,既上下的中间的两个点,从离父元素左边多远开始扩展*/
+	}	
 	.wrap:hover > .border::before{
-		left:0;
+		left:0px;						/*向左延展*/
 		width:100%;						/*width的%值是相对于其父元素大小来说的*/	
 		border:6px solid #FFF;			/*设置box样式*/
-		border-left-color:transparent;	/*这里把::before这个box的宽去掉了，只剩下长*/
+		/*这里把::before这个box的宽去掉了（设置为透明），只剩下长*/
+		border-left-color:transparent;	
 		border-right-color:transparent;
 	}
 	/*::after作为左右两条边*/
@@ -92,21 +99,21 @@
 		font-size:25px;
 		display:block;				/*??*/
 		position:absolute;			/*其父级<h1>设置了absolute,<a>也如此设置来脱离父级*/
-		/*宽度100%加上水平居中，让<a>里面的下一级，既是里面的文字居中*/
+		/*宽度100%加上水平居中，让<a>里面的下一级，即是里面的文字居中*/
 		width:100%;
 		text-align:center;
-		left:0;         /*meiyong ?*/
 		z-index:-1;   /*继承了<h1>,可省略*/
 	}
 	.wrap:hover > .border h1, .wrap:hover > .border a{
 		z-index:3;
 		transition:all .5s ease-out;
 	}
+	/*实现文字流光*/
 	.text-gradient{
 		display:inline-block;
 		color:black;
 		font-size:10em;
-		background-image: -webkit-linear-gradient(left, #F6F, #6FF 25%, #FC0 50%, #6FF 75%, #F6F);	/*设置背景图片的流光效果,颜色*/
+		background-image: -webkit-linear-gradient(left, #FA24FA, #2BC8C8 25%, #FCAA07 50%, #2BC8C8 75%, #FA24FA);	/*设置背景图片的流光效果,颜色*/
         -webkit-text-fill-color: transparent;						/*text-fill-color会覆盖color所定义的字体颜色（transparent意透明）*/
         -webkit-background-clip:text;								/*background-clip:背景裁剪（详见http://demo.doyoe.com/css3/background-clip/）*/
         -webkit-background-size: 200% 100%;							/*background-size: 200% 100%;让背景图片大小水平方向扩大一倍，这样background-position才有移动与变化的空间。*/
@@ -119,6 +126,9 @@
 </style>
 
 <body>
+	<div style="text-align: center;color: #fff;margin-top: 80px">
+		<p>用CSS3实现鼠标悬浮效果</p>
+	</div>
 	<div class="wrap">
     	<img class="blur" src="zhinaijiang.gif"/>
         <div class="border">
