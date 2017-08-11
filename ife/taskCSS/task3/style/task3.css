@@ -1,0 +1,208 @@
+*{margin: 0;padding: 0;}
+header,footer{background-color: #363636;height: 60px;font-size: 14px;position: relative;}
+/*p,ul,dl,span{font-size: 12px;}*/
+body{font-family: 'Microsoft YaHei';}
+a{text-decoration: none;}
+p.content{text-indent: 2em;line-height: 2em;letter-spacing: 1.5px;margin:5px 0px;}
+
+#title{
+	margin-right: 20px;
+	padding-left: 20px;
+	color:#fff;
+	position: absolute;
+	top:50%;
+	transform: translateY(-50%);
+}
+
+header ul{
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform:translateY(-50%);
+}
+
+header li{
+	float: left;
+	text-align: center;
+	margin:0 15px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+header a{
+	height: 60px;
+	text-decoration:none;
+	color:grey;
+}
+
+header li a:visited{
+	text-decoration: none;
+	color:grey;
+}
+
+header li a:link{
+	text-decoration: none;
+	color:grey;
+}
+
+header li a:hover{
+	color: #fff;
+}
+/**用了圣杯布局**/
+/*最外层*/
+#container{
+	padding:20px 500px 20px 20px;
+	background-color: gainsboro;
+	overflow: auto;
+}
+/*左边*/
+#article{
+	position: relative;
+	width: 100%;
+	float: left;
+	box-sizing: border-box;
+}
+#content{
+	background: #fff;
+	width: 100%;
+	float: left;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+	padding:20px;
+	overflow: hidden;
+}
+/*右边*/
+#aside{
+	background: #fff;
+	width: 460px;
+	float:left;
+	margin-left: -480px;
+	box-sizing: border-box;
+	position: relative;
+	right:-500px;
+	padding:20px;
+}
+.solid-border{   /*设置边框厚度*/
+	border-style: solid;
+	border-width: 1px 3px 3px 1px;
+	border-color: darkgray;
+}
+
+#article{
+	margin-bottom: -20px;
+}
+#article h2{
+	line-height: 2em;
+}
+#article h3{
+	color:gray;
+	line-height: 2em;
+}
+.author{
+	color: gray;
+	line-height: 3em;
+}
+#article ul{
+	list-style:none;
+	margin-left: 20px;
+}
+#article ul li{  			 /*注意这么写是为了不会影响到下面ol里面li的样式*/
+	margin:5px 0;
+}
+#pictures{
+	padding: 10px;
+}
+.picture{
+	float:left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	padding:10px;
+	border:1px solid #999;
+}
+.picture p{
+	text-align: center;
+}
+.picture img{
+	width: 100px;
+	height: 75px;
+}
+ol li{
+	margin-left: 50px;
+	font-weight: bold;
+}
+table{
+	width: 99%;
+	text-align: left;
+	border-collapse: collapse;
+}
+table th{
+	background: #000;
+	color:#fff;
+	padding: 5px;
+	border: 1px solid lightgrey; 
+}
+table td{
+	padding:5px;
+	border:1px solid lightgrey;
+}
+table td.total{
+	background: lightgrey;
+	font-weight: bold;
+}
+/*设置右边*/
+#aside h2{
+	padding: 5px 20px;
+	border-left: 3px lightgrey solid;
+	line-height: 1.5em;
+	margin-bottom: 5px;
+}
+#aside div.line{
+	line-height: 2em;
+}
+#aside .prompt{
+	display: inline-block;	/*这样才能设置宽度和padding等*/
+	width: 30%;
+	padding-right: 3px;
+	text-align: right;
+	font-size: 0.8em;
+	vertical-align: top;
+}
+#aside input{
+	margin-left: 10px;
+	padding: 3px;
+	font-size: 0.8em;
+}
+#aside .hint{
+	display: inline-block;	/*让margin和padding生效*/
+	color: gray;
+	margin-left: 10px;
+	font-size: 0.8em;
+	padding-bottom: 1.5em;
+}
+#aside select{
+	margin-left: 10px;
+	padding: 3px;
+}
+#aside textarea{
+	font-size: 1.2em;
+	font-weight: bold;
+	width: 60%;
+	margin-left: 10px;
+	padding: 0px 3px;
+}
+#submitBtn{
+	background: royalblue;
+	color:#fff;
+	width: 95%;
+	height: 40px;
+	margin:20px 0px;
+	border-radius: 10px;
+	border:2px gray solid;
+}
+
+footer{
+	color:#fff;
+	text-align: center;
+	font-size: 1.2em;
+	line-height: 60px;
+}
