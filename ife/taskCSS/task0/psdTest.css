@@ -40,7 +40,7 @@ header .header-logo{
 .header-logo a{
 	width: 180px;
 	height: 54px;
-	background-image: url("../img/header-logo.png");
+	background-image: url("../task0/img/header-logo.png");
 }
 .header-nav{
 	float: right;
@@ -79,7 +79,7 @@ header .header-logo{
 .banner-text .text-logo{
 	width:776px;
 	height: 117px;
-	background-image: url("../img/banner-text-logo.png");
+	background-image: url("../task0/img/banner-text-logo.png");
 }
 .banner-text .text-info{
 	margin-top: 17px;
@@ -182,7 +182,7 @@ header .header-logo{
 	width: 11px;
 	height: 7px;
 	margin-left: 10px;
-	background: url("../img/menu-btn-icon.png") no-repeat;
+	background: url("../task0/img/menu-btn-icon.png") no-repeat;
 }
 
 /*第一个panel*/
@@ -250,7 +250,7 @@ header .header-logo{
 	width: 12px;
 	height: 13px;
 	margin-right: 5px;
-	background-image: url("../img/star.png");
+	background-image: url("../task0/img/star.png");
 	background-repeat: no-repeat;
 }
 .food-list .food-item .nostar{
@@ -297,5 +297,5 @@ footer{
 	height: 54px;
 	margin-top: -27px;
 	margin-bottom: 12px;
-	background-image: url("../img/footer-logo.png");
+	background-image: url("../task0/img/footer-logo.png");
 }
