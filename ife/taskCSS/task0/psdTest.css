@@ -1,0 +1,301 @@
+body,div,dl,dt,ul,ol,li,h1,h2,h3,h4,h5,input,form,a,p,textarea{padding:0px;margin:0px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+li,ul,ol{
+	list-style:none;
+}
+body{
+	min-width: 1280px;
+}
+a{
+	text-decoration:none;
+	display:block;
+	color: #fff;
+}
+img{
+	border:none;
+	display:block/*图片下方有4px的hack*/
+}
+.clearfloat{zoom:1;} 
+.clearfloat:after{
+   display:block;
+   clear:both;
+   content:"";
+   visibility: hidden;
+   height:0;
+}
+/*头部*/
+header{
+	height: 110px;
+	background: #fff;
+}
+.container{
+	position: relative;
+	margin:0 auto;
+	width: 1100px;
+}
+header .header-logo{
+	float: left;
+	margin-top: 40px;
+
+}
+.header-logo a{
+	width: 180px;
+	height: 54px;
+	background-image: url("../切图练习1/img/header-logo.png");
+}
+.header-nav{
+	float: right;
+	font-size: 14px;
+}
+.header-nav .item{
+	float: left;
+	margin-top: 44px;
+	margin-left: 50px;
+}
+.header-nav .item a{
+	color:#3b3b3b;
+}
+.header-nav .item a:hover{
+	text-decoration: underline;
+}
+
+/*banner*/
+.banner{
+	position: relative;
+	background: #b3b3b3;
+}
+.banner-bg{
+	height: 570px;
+	overflow: hidden;   /*不出现滚动条*/
+}
+.banner-bg img{
+	margin:0 auto;
+}
+.banner-text{
+	position: absolute;
+	top:208px;
+	left:50%;
+	margin-left: -388px;
+}
+.banner-text .text-logo{
+	width:776px;
+	height: 117px;
+	background-image: url("../切图练习1/img/banner-text-logo.png");
+}
+.banner-text .text-info{
+	margin-top: 17px;
+	text-align: center;
+	color: #fff;
+}
+.banner-text .text-info .line{
+	display: inline-block;
+	width: 40px;
+	border-top: 1px solid #fff;
+	vertical-align: middle;
+}
+.banner-text .text-info .line-l{
+	margin-right: 26px;
+}
+.banner-text .text-info .line-r{
+	margin-left: 26px;
+}
+
+/*Menu*/
+.menu{
+	position: relative;
+	border-top:4px solid #f34949;
+}
+.menu-tips{
+	position: absolute;
+	left: 50%;
+	top:0;
+	margin-left: -78px;
+	width:165px;
+	height:75px;
+	text-align: center;
+	line-height: 65px;
+	color: #fff;
+	background: #f34949;
+}
+.menu-tips:after{
+	position: absolute;
+	content: "";
+	left:0;
+	bottom: 0;
+	width: 0;
+	height: 0;
+	border-left: 78px solid transparent;
+	border-right: 78px solid transparent;
+	border-bottom: 10px solid #fff;
+}
+
+.menu-list{
+	margin-top: 150px;
+	color: #555;
+	overflow: hidden;
+}
+.menu-list ul{
+	width: 1160px;
+
+}
+.menu-item{
+	float: left;
+	width: 520px;
+	margin-right: 60px;
+	margin-bottom: 56px;
+}
+
+.menu-item .title,.menu-item .line{
+	float: left;
+}
+.menu-item .price{
+	float: right;
+}
+.menu-item .title{
+	width:230px;
+	overflow: hidden;
+	white-space: nowrap; 
+	text-overflow: ellipsis;  /*超过则“...”*/
+	color: #999;
+}
+.menu-item .comment{
+	margin-top: 4px;
+	color: #b7b7b7;
+	font-size: 12px;
+}
+.menu-item .line{
+	margin-top: 10px;
+	width: 192px;
+	border-top: 1px solid #e3e1e1;
+}
+.menu-move-btn{
+	margin:0 auto;
+	width: 114px;
+	height: 32px;
+	padding-left: 16px;
+	border:1px solid #d7d5d5;
+	font-size: 14px;
+	line-height: 32px;
+	color: #b7b7b7;
+}
+.menu-move-btn .icon{
+	display: inline-block;
+	width: 11px;
+	height: 7px;
+	margin-left: 10px;
+	background: url("../切图练习1/img/menu-btn-icon.png") no-repeat;
+}
+
+/*第一个panel*/
+.panel{
+	margin-top: 200px;
+}
+.panel h3{
+	font-size: 20px;
+	color: #3b3b3b;
+	font-weight: normal;
+	float:left;
+	margin-right: 48px;
+}
+.panel-header .line{
+	float: left;
+	width: 200px;
+	margin-top: 10px;
+	border-top: 1px solid #e5e3e3;
+}
+.panel-header .btu-group{
+	font-size: 0;  /*清除行内样式4px的间距!不是bug*/
+	float: right;
+}
+.panel-header .btn{
+	display: inline-block;
+	margin-left: 11px;
+	width:9px;
+	height:9px;
+	background: #dedede;
+	border-radius: 50%;
+}
+.panel-header .active{
+	background: #9b9b9b;
+}
+.panel-body{
+	margin-top: 75px;
+}
+.food-list{
+	overflow: hidden;
+}
+.food-list ul{
+	width: 1160px;
+}
+.food-list .food-item{
+	float: left;
+	width: 230px;
+	margin-right:60px;
+}
+.food-list .food-item .banner{
+	margin-bottom: 30px;
+	height:202px;
+}
+.food-list .food-item .name{
+	color: #555;
+	margin-bottom: 10px;
+}
+.food-list .food-item .price{
+	float: right;
+}
+.food-list .food-item .star-bar{
+	font-size: 0;
+}
+.food-list .food-item .star{
+	display: inline-block;
+	width: 12px;
+	height: 13px;
+	margin-right: 5px;
+	background-image: url("../切图练习1/img/star.png");
+	background-repeat: no-repeat;
+}
+.food-list .food-item .nostar{
+	background-position: 0 -13px;
+}
+
+.pics{
+	height: 380px;
+	overflow: hidden;
+}
+.pic-col{
+	float: left;
+}
+.pic-col-m{
+	width: 353px;
+}
+.pic-col-s{
+	width: 287px;
+}
+.pic-col-l{
+	width: 460px;
+}
+
+/*根部*/
+footer{
+	height: 218px;
+	padding-top: 100px;
+	margin-top: 200px;
+	background: #3b3b3b;
+}
+.footer-col{
+	float: left;
+	margin-right: 60px;
+	width: 230px;
+	font-size: 14px;
+	line-height: 1.8;
+	color:#cbcbcb;
+}
+.footer-col:last-child{
+	margin-right: 0px;
+}
+.footer-logo{
+	width: 180px;
+	height: 54px;
+	margin-top: -27px;
+	margin-bottom: 12px;
+	background-image: url("../切图练习1/img/footer-logo.png");
+}
