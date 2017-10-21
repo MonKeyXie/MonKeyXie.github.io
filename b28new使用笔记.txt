@@ -1,0 +1,81 @@
+1.将b28new(Github可找到)的lang文件夹拖进项目，其中en里的b28n_public.json文件是用来存放中英文对照表的；
+
+2.b28n_public.json文件{ }中，最后一组中英对应末尾不能出现逗号；
+
+3.在需要加中英转换的.html附上转换按钮，下面为示例：
+HTML：
+	<span class="global" onclick="global()">[ GLOBAL ]</span>
+CSS:
+	.global {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 8em;
+            height: 0.4rem;
+            line-height: 3.6em;
+            font-size: 0.115rem;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1000;
+        }
+JS: 
+	引入b28n.js到此页面
+	<script>
+        pageInit();
+        type_html();
+	//点击事件
+        function global() {
+            var lang = B.getLang();
+            if (lang == "en") {
+                B.setLang("zh");
+            } else {
+                B.setLang("en");
+            }
+            window.location.reload();
+        }
+	//设置转换
+        function pageInit() {
+            var lang = B.getLang();
+            B.setTextDomain(["public"], lang);
+        }
+	//转换按钮（只在需要的页面显示）
+        function type_html() {
+            var lang = B.getLang();
+            var type_html = "";
+            if (lang == "en") {
+                type_html = '[ <span>Global</span> / <span style="color:#bbbbbb;">中文</span> ]';
+            } else {
+                type_html = '[ <span>中文</span> / <span style="color:#bbbbbb;">Global</span> ]';
+            }
+            $(".global").html(type_html)
+        }
+    	</script>
+
+4.当转换的字体是通过JS插入时，只要加上:_()即可
+	eg: showHtml("哈哈哈") --> showHtml(_("哈哈哈"))
+	是一个在b28n.js中的//Export to window里面的win._函数，这里的"_"规定了JS中如何使用函数
+
+5.调整转换后的样式差，可以建一个translation.js来改变样式(在b28n.js之后引入)：
+	eg:
+	window.onload = function pageInit() {
+        	var lang = B.getLang();
+        	B.setTextDomain(["public"], lang);
+	};
+
+	
+	var 
+		head = document.getElementsByTagName('head')[0],
+		enURL = '../../css/en-index.css',
+		linkTag = document.createElement('link');
+	linkTag.setAttribute('rel','stylesheet');
+	linkTag.setAttribute('type','text/css');
+	//若是英文语境则插入相应CSS
+	if ( B.getLang() == "en" ){
+		linkTag.href = enURL;
+		head.appendChild(linkTag);
+	}
+6.若相同中文，有不同英文翻译，可用data-lang标记：
+<div class="title"><p data-lang="动词管理密码">管理密码</p><a href="#" @click="close"></a></div>
+------》"动词管理密码": "Manage Password",
